@@ -6,15 +6,21 @@
     <version>1.0</version>
     <packaging>jar</packaging>
     <dependencies>
+     <dependency>
+            <groupId>co.unicauca.openmarket.commons</groupId>
+            <artifactId>Open-Market-Commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>ServerSocketTemplate</artifactId>
-            <version>${project.version}</version>
+            <groupId>co.unicauca</groupId>
+            <artifactId>strategyserver</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+         <exec.mainClass>co.unicauca.serversocket.LoadBalancerServer.presentation.LoadBalancerServer</exec.mainClass>
     </properties>
 </project>

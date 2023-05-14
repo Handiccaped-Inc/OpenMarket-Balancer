@@ -7,7 +7,7 @@ package co.unicauca.serversocket.loadbalancerserver.logic;
 
 import co.unicauca.serversocket.loadbalancerserver.infra.ILoadBalancerConnection;
 import co.unicauca.serversocket.loadbalancerserver.infra.LoadBalancerSocket;
-import co.unicauca.serversocket.serversockettemplate.infra.ServerHandler;
+import co.unicauca.strategyserver.infra.ServerHandler;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +42,7 @@ public class LoadBalancerHandler extends ServerHandler {
    
     
     @Override
-    public void processRequest(String requestJson) {
+    public String processRequest(String requestJson) {
         try {
             ILoadBalancerConnection conn = this.getLoadBalancerConnection();
             conn.setServer(serverScheduler.selectServer(this.getSocket()));
@@ -54,6 +54,8 @@ public class LoadBalancerHandler extends ServerHandler {
         } catch (IOException ex) {
             Logger.getLogger(LoadBalancerHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        return "";
     }
     
     private ILoadBalancerConnection getLoadBalancerConnection(){
